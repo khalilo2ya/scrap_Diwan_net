@@ -8,5 +8,5 @@ r = requests.get(base_url_poet)
 
 soup = bs(r.content, 'lxml')
 contents = soup.prettify()
-poem = soup.select_one("#poem_content").get_text(" ", strip=True )
+poem = soup.select_one("#poem_content").get_text("\n", strip=True )
 print(poem)

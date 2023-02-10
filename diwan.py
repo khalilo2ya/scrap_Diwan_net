@@ -10,7 +10,7 @@ def get_poem(url, poet_name, poem_name):
     r = requests.get(url)
     soup = bs(r.content, 'lxml')
     contents = soup.prettify()
-    poem = soup.select_one("#poem_content").get_text(" ", strip=True )
+    poem = soup.select_one("#poem_content").get_text("\n", strip=True )
     print(poem)
     poem_dict = {'poet_name': poet_name, 'poem_name': poem_name, 'poem_content': poem}
     poems.append(poem_dict)
