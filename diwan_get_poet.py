@@ -11,6 +11,7 @@ contents = soup.prettify()
 poems = soup.select("div.col-sm-12.col-md a")
 
 for index, poem in enumerate(poems):
+    
     relative_path = poem['href']
     full_path = base_path + relative_path
     print(full_path)
