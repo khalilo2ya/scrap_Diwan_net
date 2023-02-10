@@ -52,5 +52,5 @@ for index, poet in enumerate(poets):
     get_info_poet(full_path, poet_name)
 
 
-# with open('poems.json', 'w') as f:
-#     json.dump(poems, f)
+with open('poems.json', 'w') as f:
+    json.dump(poems, f)
