@@ -1,10 +1,11 @@
 import pandas as pd
+import json  # Add this line to import the json module
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dense
 
-# Load data from Excel
+# Load data from JSON
 with open('poems.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
@@ -53,8 +54,10 @@ next_words = 100
 
 for _ in range(next_words):
     token_list = tokenizer.texts_to_sequences([seed_text])[0]
-    token_list = pad_sequences([token_list], maxlen=max_sequence_len, padding='pre')  # Adjusted to use max_sequence_len
+    token_list = pad_sequences([token_list], maxlen=max_sequence_len, padding='pre')
     predicted = model.predict_classes(token_list, verbose=0)
+
+    # Reverse mapping to get word from index
     output_word = ""
     for word, index in tokenizer.word_index.items():
         if index == predicted:
