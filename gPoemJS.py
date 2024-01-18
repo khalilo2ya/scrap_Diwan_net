@@ -6,7 +6,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dense
 
 # Load data from JSON
-with open('poems.json', 'r', encoding='utf-8') as file:
+with open('poems_lite.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 df = pd.DataFrame(data)
@@ -44,7 +44,7 @@ model.add(LSTM(150))
 model.add(Dense(total_words, activation='softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-model.fit(predictors, label, epochs=100, verbose=1)
+model.fit(predictors, label, epochs=1, verbose=1)
 
 model.save('arabic_poetry_generator.h5')
 
