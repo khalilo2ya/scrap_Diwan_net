@@ -6,11 +6,12 @@ from tensorflow.keras.models import Sequential  # Importing Sequential model fro
 from tensorflow.keras.layers import Embedding, LSTM, Dense  # Importing specific layers from Keras
 
 # Load data from Excel
-file_path = 'poems.xlsx'  # Path to the Excel file containing poems
+file_path = 'poems_content_lite.xlsx'  # Path to the Excel file containing poems
 df = pd.read_excel(file_path)  # Reading the Excel file into a pandas DataFrame
 
 # Combine poet_name, poem_name, poem_content into a single text
-df['combined'] = df['poet_name'] + ' ' + df['poem_name'] + ' ' + df['poem_content']  # Combining multiple columns into one
+# df['combined'] = df['poet_name'] + ' ' + df['poem_name'] + ' ' + df['poem_content']  # Combining multiple columns into one
+df['combined'] = df['poem_content']  # Combining multiple columns into one
 
 # Preprocessing: Tokenization
 tokenizer = Tokenizer()  # Initializing Tokenizer
