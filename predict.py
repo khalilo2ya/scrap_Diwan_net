@@ -28,7 +28,7 @@ model = load_model('arabic_poetry_generator_.h5')
 
 
 
-seed_text = "عشق"
+seed_text = "حبيبي"
 next_words = 100
 
 for _ in range(next_words):
